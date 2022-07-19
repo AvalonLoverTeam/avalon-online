@@ -26,9 +26,9 @@ function App() {
             setIsConnected(false);
         });
 
-        socket.on('session', (userSession) => {
-            setUser(userSession);
-            localStorage.setItem('sessionID', userSession.sessionID);
+        socket.on('getUser', (userInfo) => {
+            setUser(userInfo);
+            localStorage.setItem('sessionID', userInfo.sessionID);
         });
 
         if (user.sessionID) {
