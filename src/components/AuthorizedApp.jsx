@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import socket from '../utils/socketIO';
+import ListRoom from './ListRoom';
 
 export default function AuthorizedApp() {
 
@@ -12,10 +13,12 @@ export default function AuthorizedApp() {
     }
 
 
+
   return (
     <div>
         <input onChange={(e)=>setRoomName(e.target.value)} type="text" placeholder='room name' />
         <button onClick={createRoom} disabled={hasInvalidName}>Create room</button>
+        <ListRoom/>
     </div>
   )
 }

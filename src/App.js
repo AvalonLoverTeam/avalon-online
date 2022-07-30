@@ -1,5 +1,7 @@
 import socket from './utils/socketIO';
 import { useState, useEffect } from 'react';
+import AuthorizedApp from './components/AuthorizedApp';
+import RoomsToJoin from './components/RoomsToJoin';
 
 function App() {
     const [user, setUser] = useState({
@@ -38,6 +40,7 @@ function App() {
         return () => {
             socket.off('connect');
             socket.off('disconnect');
+            socket.off('getUser');
         };
     }, []);
 
@@ -68,7 +71,7 @@ function App() {
                     </button>
                 </>
             ) : (
-                <div>You are connected as {JSON.stringify(user)}!</div>
+                <AuthorizedApp />
             )}
         </div>
     );
